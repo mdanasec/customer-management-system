@@ -98,6 +98,22 @@ public class CustomerService {
 
 	}
 	
+	public ResponseEntity<ResponseStructure<Optional<Customer>>> serachByPhone(long phone){
+		
+		ResponseStructure<Optional<Customer>> structure = new ResponseStructure<>();
+		Optional<Customer> recCustomer = customerRepository.searchByPhone(phone);
+		
+		if(recCustomer.isPresent()) {
+			structure.setMessage("Customer Found");
+			structure.setData(recCustomer);
+			structure.setStatusCode(HttpStatus.OK.value());
+			
+			return new ResponseEntity<ResponseStructure<Optional<Customer>>>(structure, HttpStatus.OK);
+			
+		}
+		throw new CustomerNotFoundException("Given Number "+ phone+" Customer not Found!");
+	}
+	
 }
 
 

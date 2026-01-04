@@ -1,6 +1,7 @@
 package org.springboot.CSTManagementSystem.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springboot.CSTManagementSystem.entity.Customer;
 import org.springboot.CSTManagementSystem.entity.ResponseStructure;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -45,6 +47,11 @@ public class CustomerController {
 	@DeleteMapping(path = "/delete/{id}")
 	public ResponseEntity<ResponseStructure<String>> customerDeleteById(@PathVariable Integer id){
 		return customerService.customerDeleteById(id);
+	}
+	
+	@PostMapping(path="/phone")
+	public ResponseEntity<ResponseStructure<Optional<Customer>>> serachByPhone(@RequestParam long phone){
+		return customerService.serachByPhone(phone);
 	}
 
 }
