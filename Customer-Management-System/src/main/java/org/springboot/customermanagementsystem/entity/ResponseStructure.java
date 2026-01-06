@@ -1,4 +1,4 @@
-package org.springboot.CSTManagementSystem.entity;
+package org.springboot.customermanagementsystem.entity;
 
 public class ResponseStructure<T> {
 
@@ -6,12 +6,10 @@ public class ResponseStructure<T> {
 	private String message;
 	private T data;
 
-//	default constructor
 	public ResponseStructure() {
 		super();
 	}
 
-//	Parameterize constructor
 	public ResponseStructure(int statusCode, String message, T data) {
 		super();
 		this.statusCode = statusCode;

@@ -1,4 +1,4 @@
-package org.springboot.CSTManagementSystem.entity;
+package org.springboot.customermanagementsystem.entity;
 
 import java.time.LocalDateTime;
 
@@ -12,9 +12,11 @@ import jakarta.persistence.PreUpdate;
 
 @Entity
 public class Customer {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+
 	@Column(nullable = false)
 	private String name;
 	@Column(nullable = false, unique = true)
@@ -23,22 +25,20 @@ public class Customer {
 	private String email;
 	@Column(nullable = false)
 	private String address;
-
 	@Column(nullable = false)
-	LocalDateTime createdAt;
-
+	private LocalDateTime createdAt;
 	@Column(nullable = false)
-	LocalDateTime updatedAt;
+	private LocalDateTime updateAt;
 
 	@PrePersist
 	protected void onCreate() {
 		createdAt = LocalDateTime.now();
-		updatedAt = LocalDateTime.now();
+		updateAt = LocalDateTime.now();
 	}
 
 	@PreUpdate
 	protected void onUpdate() {
-		updatedAt = LocalDateTime.now();
+		updateAt = LocalDateTime.now();
 	}
 
 	public Customer() {
@@ -46,7 +46,7 @@ public class Customer {
 	}
 
 	public Customer(Integer id, String name, long phone, String email, String address, LocalDateTime createdAt,
-			LocalDateTime updatedAt) {
+			LocalDateTime updateAt) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -54,7 +54,7 @@ public class Customer {
 		this.email = email;
 		this.address = address;
 		this.createdAt = createdAt;
-		this.updatedAt = updatedAt;
+		this.updateAt = updateAt;
 	}
 
 	public Integer getId() {
@@ -100,17 +100,17 @@ public class Customer {
 	public LocalDateTime getCreatedAt() {
 		return createdAt;
 	}
- 
+
 	public void setCreatedAt(LocalDateTime createdAt) {
 		this.createdAt = createdAt;
 	}
 
-	public LocalDateTime getUpdatedAt() {
-		return updatedAt;
+	public LocalDateTime getUpdateAt() {
+		return updateAt;
 	}
 
-	public void setUpdatedAt(LocalDateTime updatedAt) {
-		this.updatedAt = updatedAt;
+	public void setUpdateAt(LocalDateTime updateAt) {
+		this.updateAt = updateAt;
 	}
 
 }

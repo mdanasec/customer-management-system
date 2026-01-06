@@ -1,10 +1,10 @@
-package org.springboot.CSTManagementSystem;
+package org.springboot.customermanagementsystem;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class CstManagementSystemApplicationTests {
+class CustomerManagementSystemApplicationTests {
 
 	@Test
 	void contextLoads() {

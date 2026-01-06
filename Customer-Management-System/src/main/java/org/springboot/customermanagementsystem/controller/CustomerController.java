@@ -1,11 +1,11 @@
-package org.springboot.CSTManagementSystem.controller;
+package org.springboot.customermanagementsystem.controller;
 
 import java.util.List;
 import java.util.Optional;
 
-import org.springboot.CSTManagementSystem.entity.Customer;
-import org.springboot.CSTManagementSystem.entity.ResponseStructure;
-import org.springboot.CSTManagementSystem.service.CustomerService;
+import org.springboot.customermanagementsystem.entity.Customer;
+import org.springboot.customermanagementsystem.entity.ResponseStructure;
+import org.springboot.customermanagementsystem.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -19,23 +19,25 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/customers")
+@RequestMapping("/customer")
 public class CustomerController {
+	
 	@Autowired
 	private CustomerService customerService;
 	
-	@PostMapping(path="/registerCustomer")
+	@PostMapping(path = "/register")
 	public ResponseEntity<ResponseStructure<Customer>> registerCustomer(@RequestBody Customer customer){
 		return customerService.registerCustomer(customer);
 	}
 	
-	@GetMapping(path="/getCustomerById/{id}")
-	public ResponseEntity<ResponseStructure<Customer>> getCustomertById(@PathVariable Integer id){
-		return customerService.getCustomertById(id);
+	
+	@GetMapping(path = "/{id}")
+	public ResponseEntity<ResponseStructure<Customer>> getCustomerById(@PathVariable Integer id){
+		return customerService.getCustomerById(id);
 	}
 	
-	@PutMapping(path = "/updateCustomer/{id}")
-	public ResponseEntity<ResponseStructure<Customer>> updateCustomer(@RequestBody Customer customer, @PathVariable Integer id){
+	@PutMapping(path = "update/{id}")// customer/update/1
+	ResponseEntity<ResponseStructure<Customer>> updateCustomer(@RequestBody Customer customer, @PathVariable Integer id){
 		return customerService.updateCustomer(customer, id);
 	}
 	
@@ -45,13 +47,36 @@ public class CustomerController {
 	}
 	
 	@DeleteMapping(path = "/delete/{id}")
-	public ResponseEntity<ResponseStructure<String>> customerDeleteById(@PathVariable Integer id){
-		return customerService.customerDeleteById(id);
+	public ResponseEntity<ResponseStructure<String>> deleteCustomerById(@PathVariable Integer id){
+		return customerService.deleteCustomerById(id);
 	}
 	
-	@PostMapping(path="/phone")
-	public ResponseEntity<ResponseStructure<Optional<Customer>>> serachByPhone(@RequestParam long phone){
-		return customerService.serachByPhone(phone);
+	@PostMapping(path = "/searchByPhone")
+	ResponseEntity<ResponseStructure<Optional<Customer>>> searchByPhone(@RequestParam long phone){
+		return customerService.searchByPhone(phone);
 	}
-
+	
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

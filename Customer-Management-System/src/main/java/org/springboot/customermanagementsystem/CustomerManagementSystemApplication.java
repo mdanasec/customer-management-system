@@ -1,13 +1,13 @@
-package org.springboot.CSTManagementSystem;
+package org.springboot.customermanagementsystem;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CstManagementSystemApplication {
+public class CustomerManagementSystemApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CstManagementSystemApplication.class, args);
+		SpringApplication.run(CustomerManagementSystemApplication.class, args);
 	}
 
 }
